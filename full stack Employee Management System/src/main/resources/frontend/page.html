@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee System Pro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- PAGE 1: ADMIN LOGIN -->
+    <section id="login-page" class="page-section active">
+        <div class="login-card slide-in-down">
+            <h2>Admin Login</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label>Admin Name</label>
+                    <input type="text" id="adminName" placeholder="Enter admin" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="adminPass" placeholder="Enter admin" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- PAGE 2: DASHBOARD -->
+    <section id="dashboard-page" class="page-section hidden">
+        <header>
+            <h1>Welcome, Admin</h1>
+            <p>Select an action to proceed</p>
+        </header>
+        <div class="dashboard-grid slide-in-right">
+            <div class="card dash-card" onclick="goToAddPage()">
+                <span class="material-icons large-icon">Add Employee</span>
+                <p>Register a new employee into the system</p>
+            </div>
+            <div class="card dash-card" onclick="goToViewPage()">
+                <span class="material-icons large-icon">View All Employees</span>
+                <p>Search, Edit, or Delete existing employees</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAGE 3: ADD/EDIT EMPLOYEE -->
+    <section id="add-employee-page" class="page-section hidden">
+        <div class="back-nav">
+            <button class="btn-text" onclick="goToDashboard()">Back to Dashboard</button>
+        </div>
+        <div class="card form-card slide-in-left">
+            <h3 id="formTitle"><span class="material-icons">Add Employee</span> Add New Employee</h3>
+            <form id="employeeForm">
+                <input type="hidden" id="employeeId">
+                <div class="form-group">
+                    <label>First Name</label>
+                    <input type="text" id="firstName" required>
+                </div>
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <input type="text" id="lastName" required>
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary" id="saveBtn">
+                        <span class="material-icons">save</span> Save
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- PAGE 4: LIST EMPLOYEES -->
+    <section id="list-employee-page" class="page-section hidden">
+        <div class="back-nav">
+            <button class="btn-text" onclick="goToDashboard()">Back to Dashboard</button>
+        </div>
+        <div class="card table-card slide-in-right">
+            <div class="table-header">
+                <h3>Employee List</h3>
+                <div class="search-box">
+                    <span class="material-icons search-icon">search</span>
+                    <input type="text" id="searchInput" placeholder="Search by name...">
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="styled-table">
+                    <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody id="employeeTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
